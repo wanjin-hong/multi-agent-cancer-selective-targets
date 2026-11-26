@@ -1,6 +1,6 @@
 # MANIFEST — staged GitHub repository contents
 
-Staged 26 November 2026 from the working programme folders. All `code/` and `data/` files are **byte-identical copies** of their originals (md5 spot-checked: `pipeline-playbook.md`, `aml-top20.csv`, `census_query_truecpm.py` — identical). Nothing in `code/` or `data/` was edited. Total staged size: **1.16 MB**.
+Staged 26 November 2026 from the working programme folders. All `code/` and `data/` files are **byte-identical copies** of their originals (md5-verified: the original 9 `code/` files spot-checked, and all 147 files added in the second staging pass verified file-by-file, 0 mismatches). Nothing in `code/` or `data/` was edited. Total staged size: **2.4 MB** (201 files: 156 in `code/`, 42 in `data/`, plus README, LICENSE and this manifest). The folder on disk is 3.1 MB because it also holds a local `.git` directory from the first push; `.git` is not staged content and is not uploaded.
 
 Programme folder (P): `/home/hatch/workspace/research_notes/multi-cancer-selective-targets-20261120`
 TNBC folder (T): `/home/hatch/workspace/research_notes/depmap-tnbc-selective-targets-20261120`
@@ -20,6 +20,71 @@ TNBC folder (T): `/home/hatch/workspace/research_notes/depmap-tnbc-selective-tar
 | `code/census_query_truecpm.py` | `P/tabula-sapiens/census_query_truecpm.py` | Tabula query with true per-cell-total normalisation (Census obs `raw_sum`). Takes paths as CLI arguments. |
 | `code/analyze_tabula_truecpm.py` | `P/tabula-sapiens/analyze_tabula_truecpm.py` | Analysis of the true-CPM query output. Path-relative; no editing needed. |
 | `code/verify_headlines_truecpm.py` | `P/tabula-sapiens/verify_headlines_truecpm.py` | 62 checks on the corrected Tabula numbers. Hard-codes `TAB` to the original Tabula folder — one line to edit. |
+
+### code/calibration/ (4 files)
+
+| File in repo | Original source path |
+|---|---|
+| `code/calibration/calibrate.py` | `P/drug-target-calibration/calibrate.py` |
+| `code/calibration/conditional_checks.py` | `P/drug-target-calibration/conditional_checks.py` |
+| `code/calibration/build_summary.py` | `P/drug-target-calibration/build_summary.py` |
+| `code/calibration/verify_headlines.py` | `P/drug-target-calibration/verify_headlines.py` |
+
+### code/partner-mining/ (2 files)
+
+| File in repo | Original source path |
+|---|---|
+| `code/partner-mining/codepend.py` | `P/klf5-taz-partners/codepend.py` |
+| `code/partner-mining/verify_headlines.py` | `P/klf5-taz-partners/verify_headlines.py` |
+
+### code/adc-intersection/ (2 files)
+
+| File in repo | Original source path |
+|---|---|
+| `code/adc-intersection/intersect.py` | `P/adc-intersection/intersect.py` |
+| `code/adc-intersection/verify_headlines.py` | `P/adc-intersection/verify_headlines.py` |
+
+### code/per-cancer/ (139 files, 19 cancers)
+
+One subfolder per cancer, named after the source folder. All files are byte-identical copies of the `.py` scripts in that cancer's programme folder. Glioma has no `.py` files in its programme folder (data and reports only), and TNBC's scan folder (`depmap-tnbc-selective-targets-20261120`) also contains no `.py` files, so neither has a subfolder here.
+
+**`code/per-cancer/aml/` (8 files)** — `celline_rna.py`, `fetch_cbioportal.py`, `finalize.py`, `merge.py`, `mutation_check.py`, `process_tcga.py`, `scan.py`, `verify_headlines.py`
+
+**`code/per-cancer/bladder/` (11 files)** — `celline_rna.py`, `fetch_cbioportal.py`, `fgfr3_check.py`, `finalize.py`, `gdc_fetch.py`, `gdc_tumour_normal.py`, `luminal_basal_check.py`, `merge.py`, `process_tcga.py`, `scan.py`, `verify_headlines.py`
+
+**`code/per-cancer/colon/` (6 files)** — `step1_depmap_scan.py`, `step2_cbioportal_fetch.py`, `step3_tcga_pancan_fetch.py`, `step4_protein_fetch.py`, `step5_merge_score.py`, `verify_headlines.py`
+
+**`code/per-cancer/egfr-mutant-lung/` (4 files)** — `compute_egfr_lung.py`, `fetch_tcga.py`, `merge_tcga.py`, `verify_headlines.py`
+
+**`code/per-cancer/endometrial/` (8 files)** — `celline_rna.py`, `fetch_cbioportal.py`, `finalize.py`, `gdc_tumour_normal.py`, `merge.py`, `process_tcga.py`, `scan.py`, `verify_headlines.py`
+
+**`code/per-cancer/esophageal-squamous/` (9 files)** — `celline_rna.py`, `fetch_cbioportal.py`, `finalize.py`, `gdc_fetch.py`, `gdc_tumour_normal.py`, `merge.py`, `process_tcga.py`, `scan.py`, `verify_headlines.py`
+
+**`code/per-cancer/esophagogastric/` (9 files)** — `celline_rna.py`, `fetch_cbioportal.py`, `finalize.py`, `gdc_fetch.py`, `gdc_tumour_normal.py`, `merge.py`, `process_tcga.py`, `scan.py`, `verify_headlines.py`
+
+**`code/per-cancer/ewing/` (5 files)** — `celline_rna.py`, `fusion_check.py`, `merge.py`, `scan.py`, `verify_headlines.py`
+
+**`code/per-cancer/hcc/` (6 files)** — `celline_rna.py`, `finalize.py`, `gdc_tumour_normal.py`, `merge.py`, `scan.py`, `verify.py`
+
+**`code/per-cancer/head-and-neck/` (8 files)** — `celline_rna.py`, `fetch_cbioportal.py`, `finalize.py`, `gdc_tumour_normal.py`, `merge.py`, `process_tcga.py`, `scan.py`, `verify_headlines.py`
+
+**`code/per-cancer/kras-mutant-lung/` (6 files)** — `compute_kras_lung.py`, `fetch_kras_tcga.py`, `fetch_kras_tcga_get.py`, `fetch_per_gene.py`, `merge_kras_tcga.py`, `verify_headlines.py`
+
+**`code/per-cancer/melanoma/` (5 files)** — `build_top20.py`, `step1_scan.py`, `step2_fetch_tcga.py`, `step3_merge.py`, `verify_headlines.py`
+
+**`code/per-cancer/mesothelioma/` (2 files)** — `meso_axis.py`, `meso_nf2.py`
+
+**`code/per-cancer/neuroblastoma/` (12 files)** — `celline_rna.py`, `finalize.py`, `gdc_cross_cancer.py`, `gdc_fetch.py`, `gdc_perfile.py`, `gdc_retry_curl.py`, `gdc_threaded.py`, `merge.py`, `mutations.py`, `mycn_split.py`, `scan.py`, `verify_headlines.py`
+
+**`code/per-cancer/osteosarcoma/` (8 files)** — `celline_rna.py`, `fetch_cbioportal.py`, `finalize.py`, `merge.py`, `mutations.py`, `process_tcga.py`, `scan.py`, `verify_headlines.py`
+
+**`code/per-cancer/ovarian/` (7 files)** — `celline_rna.py`, `fetch_cbioportal.py`, `finalize.py`, `merge.py`, `process_tcga.py`, `scan.py`, `verify_headlines.py`
+
+**`code/per-cancer/pancreatic/` (8 files)** — `celline_rna.py`, `fetch_cbioportal.py`, `finalize.py`, `gdc_tumour_normal.py`, `merge.py`, `process_tcga.py`, `scan.py`, `verify.py`
+
+**`code/per-cancer/renal-cell/` (10 files)** — `celline_rna.py`, `fetch_cbioportal.py`, `finalize.py`, `gdc_fetch.py`, `gdc_perfile.py`, `gdc_tumour_normal.py`, `merge.py`, `process_tcga.py`, `scan.py`, `verify_headlines.py`
+
+**`code/per-cancer/small-cell-lung/` (7 files)** — `celline_rna.py`, `fetch_cbioportal.py`, `finalize.py`, `merge.py`, `process_tcga.py`, `scan.py`, `verify_headlines.py`
 
 ### data/ — top-20 lists (20 files)
 
@@ -84,7 +149,7 @@ Genes passing both the dependency bar and the over-expression bar, per cancer. T
 | Per-cancer reports, one-table summaries, `synthesis.md` | Narrative documents, not code or data. The manuscript is the citable record. |
 | Manuscript text (`manuscript.md`), figures (PNG/PDF), tables (.md/.xlsx), Source Data files | The submission package. Figures and tables are rebuilt from `data/` by `code/build_figs_tables.py`; Source Data files by `code/write_source_data.py`. Not staged here. |
 | Tabula per-gene summaries (`per_gene_summary.csv`, `per_gene_summary_truecpm.csv`, `background_summary*.csv`) and per-organ query outputs | Regenerable with `code/census_query_truecpm.py`. The original `per_gene_summary.csv` (query-set-relative normalisation) is retained in the programme folder for audit. |
-| Drug-target calibration outputs (`target_cancer_matrix.csv`, `target_summary.csv`), ADC intersection outputs, KLF5/TAZ partner-mining outputs, `mesothelioma/tead_axis.csv` | Downstream legs not staged in this pass. Note: `verify_headlines.py`, `write_source_data.py` and `verify_source_data.py` read some of these, so they cannot run end-to-end from this checkout alone (see README). |
+| Drug-target calibration outputs (`target_cancer_matrix.csv`, `target_summary.csv`), ADC intersection outputs, KLF5/TAZ partner-mining outputs, `mesothelioma/tead_axis.csv` | The leg **scripts** are now staged (`code/calibration/`, `code/partner-mining/`, `code/adc-intersection/`); only their output data files remain unstaged. Note: `verify_headlines.py`, `write_source_data.py` and `verify_source_data.py` read some of these outputs, so they still cannot run end-to-end from this checkout alone (see README). |
 | Melanoma `_top20_raw.csv` | Superseded intermediate; `melanoma-top20.csv` is the final list. |
 | `__pycache__/`, run logs (`.log`), build logs | Build artefacts. |
 | Personal information | None present in any included file. The only personal name is the author's, in the README citation line and the LICENSE copyright line, as intended. |
@@ -92,6 +157,6 @@ Genes passing both the dependency bar and the over-expression bar, per cancer. T
 ## Decisions needed from the author (nothing here is published or uploaded)
 
 1. **Repository name and visibility** (public vs private) — to be decided when creating the GitHub repository.
-2. **Whether to include the downstream-leg outputs** (calibration, ADC intersection, partner mining) in a later staging pass — they are needed for `verify_headlines.py` to run end-to-end.
+2. **Whether to include the downstream-leg output data files** (calibration `target_cancer_matrix.csv`/`target_summary.csv`, ADC intersection outputs, partner-mining outputs, `mesothelioma/tead_axis.csv`) — the leg scripts were staged in the second pass (26 Nov 2026 evening); the outputs are still not staged, and they are needed for `verify_headlines.py` to run end-to-end.
 3. **Whether the AML blood-only-comparator top 20 and the melanoma strict list should stay in** — both were included as extras beyond the brief; they can be removed with a single delete each.
 4. **Zenodo archiving** — a frozen release DOI is still to be created (currently a placeholder in the manuscript); the GitHub release is normally the trigger.
